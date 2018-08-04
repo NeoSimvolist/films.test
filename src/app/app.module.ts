@@ -8,6 +8,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {Ng2Webstorage} from "ngx-webstorage";
 
@@ -38,6 +39,7 @@ import {AppRoutingModule} from './app-routing.module';
         MatInputModule,
         MatAutocompleteModule,
         MatButtonModule,
+        MatProgressSpinnerModule,
 
         AppRoutingModule,
     ],

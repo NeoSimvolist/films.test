@@ -1,5 +1,5 @@
 import {Observable} from "rxjs/index";
-import {takeUntil, map, switchMap, debounceTime} from 'rxjs/operators';
+import {takeUntil, map, switchMap, debounceTime, finalize} from 'rxjs/operators';
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -24,6 +24,8 @@ export class FilmsComponent extends BaseComponent implements OnInit {
     films$: Observable<FilmModel[]>;
 
     storageFilms: FilmModel[] = [];
+    loading = false;
+    notFound = false;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -42,8 +44,18 @@ export class FilmsComponent extends BaseComponent implements OnInit {
             .pipe(
                 takeUntil(this.destroy$),
                 debounceTime(300),
-                switchMap(query => this.filmsService.search(query)),
-                map(response => response.Search),
+                switchMap(query => {
+                    this.loading = true;
+                    return this.filmsService
+                        .search(query)
+                        .pipe(
+                            finalize(() => this.loading = false)
+                        );
+                }),
+                map(response => {
+                    this.notFound = !response.Search;
+                    return response.Search ? response.Search : [];
+                }),
             );
 
         this.loadFilms();

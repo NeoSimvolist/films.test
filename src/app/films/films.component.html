@@ -7,7 +7,14 @@
                 <span>{{film.Title}}</span> |
             </mat-option>
         </mat-autocomplete>
+        <div *ngIf="loading" class="spinner">
+            <mat-spinner diameter="16"></mat-spinner>
+        </div>
+        <div *ngIf="notFound && !loading && form.dirty" class="message">
+            Не найдено
+        </div>
     </mat-form-field>
+
 </form>
 
 <div class="films">

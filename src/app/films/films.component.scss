@@ -4,6 +4,10 @@
   justify-content: center;
 }
 
+.example-full-width {
+  position: relative;
+}
+
 .films {
   display: flex;
   flex-direction: row;
@@ -28,4 +32,26 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+}
+
+.spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -20px;
+  top: 0;
+  bottom: 0;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -20px;
 }
