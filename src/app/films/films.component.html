@@ -1,0 +1,21 @@
+<form [formGroup]="form" class="example-form">
+    <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Поиск..." matInput formControlName="search" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="searchOptionSelected($event)"
+                          [displayWith]="displayFn">
+            <mat-option *ngFor="let film of films$ | async" [value]="film">
+                <span>{{film.Title}}</span> |
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>
+
+<div class="films">
+    <div *ngFor="let film of storageFilms; let index = index"
+         (click)="openClick(film, $event)"
+         class="films-item">
+        <div class="films-item-preview" [ngStyle]="{'background-image': 'url('+film.Poster+')'}"></div>
+        <div class="films-item-title">{{film.Title}}</div>
+        <button class="films-item-control" mat-button (click)="deleteClick(index, $event)">Удалить</button>
+    </div>
+</div>

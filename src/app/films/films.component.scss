@@ -1,0 +1,31 @@
+.example-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.films {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.films-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.films-item-title {
+  font-weight: bold;
+}
+
+.films-item-preview {
+  width: 200px;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
