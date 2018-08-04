@@ -21,7 +21,7 @@ export class FilmsComponent extends BaseComponent implements OnInit {
 
     form: FormGroup;
 
-    films$: Observable<FilmModel>;
+    films$: Observable<FilmModel[]>;
 
     storageFilms: FilmModel[] = [];
 

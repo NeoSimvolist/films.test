@@ -20,7 +20,7 @@ export class FilmsService implements Resolve<FilmModel> {
     }
 
     one(imdbID: string): Observable<FilmModel> {
-        return this.httpClient.get<FilmResponse>(`http://www.omdbapi.com?apikey=672a52f6&plot=full&i=${imdbID}`);
+        return this.httpClient.get<FilmModel>(`http://www.omdbapi.com?apikey=672a52f6&plot=full&i=${imdbID}`);
     }
 
     search(query: string): Observable<FilmResponse> {
